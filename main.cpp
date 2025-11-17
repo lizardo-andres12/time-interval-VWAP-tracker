@@ -36,9 +36,7 @@ int main()
 
     while (std::cin >> timestamp >> price >> quantity)
     {
-	std::uint32_t minTimeForInclusion {timestamp - windowSize};
-	
-	while (!orders.empty() && orders.front().timestamp <= minTimeForInclusion)
+	while (!orders.empty() && timestamp - orders.front().timestamp >= windowSize)
 	{
 	    const Order& order = orders.front();
 	    priceByVolume -= order.price * order.quantity;
