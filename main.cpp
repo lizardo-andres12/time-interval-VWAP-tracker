@@ -6,7 +6,7 @@
 
 struct Order
 {
-    std::uint32_t timestamp;
+    std::uint64_t timestamp;
     double price;
     int quantity;
 };
@@ -20,17 +20,17 @@ int main()
     std::cout << std::fixed << std::setprecision(6);
 
     std::deque<Order> orders;
-    double priceByVolume {0};
-    int totalVolume {0};
+    double priceByVolume = 0;
+    int totalVolume = 0;
 
-    std::uint32_t windowSize;
+    std::uint64_t windowSize;
     if (!(std::cin >> windowSize))
     {
 	std::cerr << "Invalid input format, window size must come first" << '\n';
 	return 1;
     }
 
-    std::uint32_t timestamp;
+    std::uint64_t timestamp;
     double price;
     int quantity;
 
